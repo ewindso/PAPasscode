@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PAPasscodeViewController.h"
 
+#define STATUS_BAR_HEIGHT   20
 #define NAVBAR_HEIGHT   44
 #define PROMPT_HEIGHT   74
 #define DIGIT_SPACING   10
@@ -71,12 +72,14 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 
-    UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, view.bounds.size.width, NAVBAR_HEIGHT)];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    
+    UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT, view.bounds.size.width, NAVBAR_HEIGHT)];
     navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     navigationBar.items = @[self.navigationItem];
     [view addSubview:navigationBar];
     
-    contentView = [[UIView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, view.bounds.size.width, view.bounds.size.height-NAVBAR_HEIGHT)];
+    contentView = [[UIView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUS_BAR_HEIGHT, view.bounds.size.width, view.bounds.size.height-NAVBAR_HEIGHT - STATUS_BAR_HEIGHT)];
     contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     if (_backgroundView) {
         [contentView addSubview:_backgroundView];
