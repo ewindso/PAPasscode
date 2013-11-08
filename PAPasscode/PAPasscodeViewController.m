@@ -196,7 +196,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidCancel:)]) {
+    if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidCancel:)] && !_hideCancel) {
         if (_simple) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
         } else {

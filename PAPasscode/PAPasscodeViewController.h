@@ -52,6 +52,7 @@ typedef enum {
 @property (strong) NSString *confirmPrompt;
 @property (strong) NSString *changePrompt;
 @property (strong) NSString *message;
+@property (assign) BOOL hideCancel;
 
 - (id)initForAction:(PasscodeAction)action;
 
